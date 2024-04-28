@@ -1,0 +1,53 @@
+//Guess the correct number between 1 to 100
+
+import java.util.Scanner;
+import java.util.Random;
+
+class game {
+    int comp, user, guess=0;
+
+    public void setUserNumber(int n) {
+        user = n;
+    }
+
+    public void setCompNumber(int n) {
+        comp = n;
+    }
+    public void numnerOfGuesses(){
+        System.out.println("Total number of guesses : " + guess);
+
+    }
+    public void result() {
+        while (true) {
+            Scanner sc= new Scanner(System.in);
+            System.out.print("Enter your guess (between 1 to 100) : ");
+            int n= sc.nextInt();
+            setUserNumber(n);
+            if (user == comp) {
+                guess++;
+                System.out.println("Congrats you guessed the right number!!!");
+                break;
+            } else if (user >= comp) {
+                guess++;
+                System.out.println("Your guessed number is higher!");
+
+            } else {
+                guess++;
+                System.out.println("Your guessed number is lower!");
+            }
+
+        }
+        numnerOfGuesses();
+    }
+
+}
+
+public class Practice3 {
+    public static void main(String[] args) {
+        Random rn = new Random();
+        int rand = rn.nextInt(100);
+        game myGame = new game();
+        myGame.setCompNumber(rand);
+        myGame.result();
+    }
+}
