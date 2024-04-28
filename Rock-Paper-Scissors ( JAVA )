@@ -1,0 +1,88 @@
+//Rock Paper Scisssors game
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Game1 {
+    public static void main(String[] args) {
+        int cs = 0, ps = 0;
+        int a = 0;
+        do {
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Enter your move: ");
+            String Move = sc.next().toLowerCase();
+//            String move = Move.toLowerCase();
+
+            Random ran = new Random();
+            int rand = ran.nextInt(3);
+            if (rand == 0) {
+                System.out.println("Computer chose Rock");
+            } else if (rand == 1) {
+                System.out.println("Computer chose Paper");
+
+            } else if (rand == 2) {
+                System.out.println("Computer chose Scissors");
+
+            }
+            switch (Move) {
+                case "paper":
+                    System.out.println("You chose Paper");
+                    if (rand == 0) {
+                        System.out.println("You won! Congrats...");
+                        ps++;
+                    } else if (rand == 1) {
+                        System.out.println("It is a draw! ");
+                    } else {
+                        System.out.println("Computer won! ");
+                        cs++;
+                    }
+                    break;
+                case "rock":
+                    System.out.println("You chose Rock");
+                    if (rand == 0) {
+                        System.out.println("It is a draw! ");
+                    } else if (rand == 1) {
+                        System.out.println("Computer won! ");
+                        cs++;
+                    } else {
+                        System.out.println("You won! Congrats...");
+                        ps++;
+                    }
+                    break;
+                case "scissors":
+                    System.out.println("You chose Scissors");
+                    if (rand == 0) {
+                        System.out.println("Computer won! ");
+                        cs++;
+                    } else if (rand == 1) {
+                        System.out.println("You won! Congrats...");
+                        ps++;
+                    } else {
+                        System.out.println("It is a draw! ");
+                    }
+                    break;
+                default:
+                    System.out.println("Please choose rock, paper or scissors");
+            }
+            System.out.printf("Your score: %d, Computer score: %d\n", ps, cs);
+            do {
+                System.out.print("Do you want to play again? Yes or No: ");
+                String option = sc.next().toLowerCase();
+
+                switch (option) {
+                    case "yes":
+                        a = 1;
+                        break;
+                    case "no":
+                        System.exit(0);
+                        break;
+                    default: {
+                        System.out.println("Invalid input");
+                        a = 2;
+                    }
+
+                }
+            } while (a == 2);
+        } while (a == 1);
+    }
+}
